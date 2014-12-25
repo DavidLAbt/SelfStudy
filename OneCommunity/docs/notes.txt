@@ -1,0 +1,10 @@
+# How to install wxWidgets on Mac
+
+http://www.appletonaudio.com/blog/2013/wxwidgets-c-libraries-and-c11/
+
+
+../configure --disable-shared --enable-unicode --with-cocoa --with-macosx-version-min=10.7 --with-macosx-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk CXXFLAGS="-std=c++0x -stdlib=libc++" CPPFLAGS="-stdlib=libc++" LIBS=-lc++
+
+
+Make教程
+http://blog.csdn.net/liang13664759/article/details/1771246
