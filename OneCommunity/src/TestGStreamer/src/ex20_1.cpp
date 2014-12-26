@@ -2,7 +2,7 @@
 
 
 /* message handle function */
-static gboolean my_bus_call(GstBus *bus, GstMessage * msg, gpointer data) {
+static gboolean my_bus_callback(GstBus *bus, GstMessage * msg, gpointer data) {
   
   // get the main loop
   GMainLoop *loop = (GMainLoop* ) data;
@@ -41,7 +41,7 @@ gint main (gint argc, gchar *argv[]) {
   GstElement *play;
   GstBus *bus;
   
-  char filename[] = "/Users/Jing/Dropbox/Jobs/OneCommunity/src/TestGStreamer/data/Epoq-Lepidoptera.ogg"; 
+  char filename[] = "/Users/Jing/Dropbox/Jobs/OneCommunity/src/TestGStreamer/data/big_buck_bunny.ogv"; 
   gchar* uri = g_filename_to_uri(filename, NULL, NULL);
   
   /* init GStreamer */
