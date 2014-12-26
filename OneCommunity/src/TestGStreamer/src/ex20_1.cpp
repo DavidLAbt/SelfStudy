@@ -13,6 +13,8 @@ static gboolean my_bus_call(GstBus *bus, GstMessage * msg, gpointer data) {
       g_print("End of stream\n");
       g_main_loop_quit(loop);
       break;
+      
+      
     case GST_MESSAGE_ERROR :{
       gchar *debug;
       GError *error;
@@ -39,7 +41,9 @@ gint main (gint argc, gchar *argv[]) {
   GstElement *play;
   GstBus *bus;
   
-  gchar uri[] = "./data/"
+  char filename[] = "/Users/Jing/Dropbox/Jobs/OneCommunity/src/TestGStreamer/data/Epoq-Lepidoptera.ogg"; 
+  gchar* uri = g_filename_to_uri(filename, NULL, NULL);
+  
   /* init GStreamer */
   gst_init (&argc, &argv);
   loop = g_main_loop_new (NULL, FALSE);
@@ -53,13 +57,20 @@ gint main (gint argc, gchar *argv[]) {
   bus = gst_pipeline_get_bus (GST_PIPELINE (play));
   gst_bus_add_watch (bus, my_bus_callback, loop);
   gst_object_unref (bus);
+  
+  /*set state to playing*/
   gst_element_set_state (play, GST_STATE_PLAYING);
   
   
   /* now run */
   g_main_loop_run (loop);
-  /* also clean up */
+  
+  
+  /* clean up */
   gst_element_set_state (play, GST_STATE_NULL);
   gst_object_unref (GST_OBJECT (play));
+  
+  
+  g_free(uri);
   return 0;
 }

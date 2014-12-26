@@ -5,6 +5,22 @@
 #include <gst/gst.h>
 #include <glib.h>
 
+
+/* new in this file */
+static gboolean cb_print_position(GstElement *pipeline) {
+  
+  gint64 pos, len;
+  gboolean state1, state2;
+  
+  state1 = gst_element_query_position(pipeline, GST_FORMAT_TIME, &pos);
+  state2 = gst_element_query_duration(pipeline, GST_FORMAT_TIME, &len);
+  
+  if (state1 && state2){
+    g_print ("Time: %" GST_TIME_FORMAT " / %" GST_TIME_FORMAT "\r", GST_TIME_ARGS (pos), GST_TIME_ARGS (len));
+  }
+  
+  return TRUE;
+}
 /* message handle function */
 static gboolean bus_call(GstBus *bus, GstMessage * msg, gpointer data) {
   
@@ -118,15 +134,20 @@ int main(int argc, char* argv[]) {
   
   g_signal_connect (demuxer, "pad-added", G_CALLBACK (on_pad_added), decoder);
   
+  
+  
   /* Set the pipeline to "playing" state*/
   g_print ("Now playing: %s\n", filename);
   gst_element_set_state (pipeline, GST_STATE_PLAYING);
   
+  /*add print position*/
+  g_timeout_add (200, (GSourceFunc) cb_print_position, pipeline);
   
   /* run loop */
   g_print("Running...\n");
   g_main_loop_run(loop);
   
+ 
   /* Out of the main loop, clean up nicely */
   g_print ("Returned, stopping playback\n");
   gst_element_set_state (pipeline, GST_STATE_NULL);

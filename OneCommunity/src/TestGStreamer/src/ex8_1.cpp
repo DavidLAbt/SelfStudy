@@ -43,6 +43,13 @@ static gboolean bus_call(GstBus *bus, GstMessage * msg, gpointer data) {
 static void on_pad_added(GstElement *element, GstPad *pad, gpointer data) {
   GstPad *sinkpad;
   
+  gchar *name;
+  
+  name = gst_pad_get_name (pad);
+  g_print ("A new pad %s was created\n", name);
+  g_free (name);
+  
+  
   GstElement *decoder = (GstElement *) data; // the element connect to element
   
   g_print("Dynamic pad created, linking demuxer/decorder \n ");
