@@ -1,0 +1,45 @@
+https://wiki.wxwidgets.org/Microsoft_Visual_C%2B%2B_Guide
+
+
+#  Add the lib
+Additional Library Directories: 
+C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\lib\vc_x64_dll;%(AdditionalLibraryDirectories)
+<path to dll>
+
+Additional Dependencies:
+wxmsw30ud_media.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;winmm.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)
+
+# linker setting
+/OUT:
+"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples\x64\Debug\mediaplayer.exe" 
+/MANIFEST 
+/NXCOMPAT 
+/PDB:"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples\x64\Debug\mediaplayer.pdb" 
+/DYNAMICBASE "wxmsw30ud_media.lib" "wxmsw30ud_core.lib" "wxbase30ud.lib" "wxtiffd.lib" "wxjpegd.lib" "wxpngd.lib" "wxzlibd.lib" "wxregexud.lib" "wxexpatd.lib" "winmm.lib" "comctl32.lib" "rpcrt4.lib" "wsock32.lib" "wininet.lib" "kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "comdlg32.lib" "advapi32.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "odbc32.lib" "odbccp32.lib" 
+/DEBUG /MACHINE:X64 
+/INCREMENTAL 
+/PGD:"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples\x64\Debug\mediaplayer.pgd" 
+/SUBSYSTEM:WINDOWS 
+/MANIFESTUAC:"level='asInvoker' 
+uiAccess='false'" 
+/ManifestFile:"x64\Debug\mediaplayer.exe.intermediate.manifest" 
+/ERRORREPORT:PROMPT 
+/NOLOGO 
+/LIBPATH:".\..\..\lib\vc_lib" 
+/LIBPATH:"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\lib\vc_x64_dll" 
+/TLBID:1 
+
+
+# Preprocessor Definitions
+WIN32;_DEBUG;__WXMSW__;_WINDOWS;NOPCH;_CRT_SECURE_NO_DEPRECATE;WXUSINGDLL;__WXDEBUG__;%(PreprocessorDefinitions)
+
+#Additional Include Directories
+C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\include;C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\lib\vc_x64_dll\mswud;C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples;%(AdditionalIncludeDirectories)
+C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\include;
+C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\lib\vc_x64_dll\mswud;
+C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples;%(AdditionalIncludeDirectories)
+
+# command line
+/GS /W4 /Gy- /Zc:wchar_t /I"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\include" /I"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\lib\vc_x64_dll\mswud" /I"C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\wxWidgets-3.0.2\samples" /Zi /Gm- /Od /Fd"vc_mswud\mediaplayer.pdb" /fp:precise /D "WIN32" /D "_DEBUG" /D "__WXMSW__" /D "_WINDOWS" /D "NOPCH" /D "_CRT_SECURE_NO_DEPRECATE" /D "WXUSINGDLL" /D "__WXDEBUG__" /D "_VC80_UPGRADE=0x0600" /D "_UNICODE" /D "UNICODE" /errorReport:prompt /WX- /Zc:forScope /GR /Gd /MDd /Fa".\vc_mswud\mediaplayer\" /EHsc /nologo /Fo".\vc_mswud\mediaplayer\" /Fp".\vc_mswud\mediaplayer\mediaplayer.pch" 
+
+

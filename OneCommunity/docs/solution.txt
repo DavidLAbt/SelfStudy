@@ -1,0 +1,16 @@
+
+
+SolutionDir="C:\Users\Jing\Dropbox\Jobs\OneCommunity\win\src\ui\libs\wx"
+
+
+#Additional Dependencies:
+wxmsw30ud_media.lib;wxmsw30ud_core.lib;wxbase30ud.lib;wxtiffd.lib;wxjpegd.lib;wxpngd.lib;wxzlibd.lib;wxregexud.lib;wxexpatd.lib;winmm.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;wininet.lib;%(AdditionalDependencies)
+
+#Preprocessor Definitions
+WIN32;_DEBUG;__WXMSW__;_WINDOWS;NOPCH;_CRT_SECURE_NO_DEPRECATE;WXUSINGDLL;__WXDEBUG__;%(PreprocessorDefinitions)
+
+#Additional Include Directories
+$(SolutionDir)\include;$(SolutionDir)\mswud;%(AdditionalIncludeDirectories)
+
+#Additional Library Directories: 
+$(SolutionDir)\libs;%(AdditionalLibraryDirectories)
