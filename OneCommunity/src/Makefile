@@ -10,7 +10,7 @@ WX_HEADERS=-I$(WX_DIR)/osx_cocoa-unicode-static-3.0 -I$(WX_DIR)/include
 WX_COMPILE= -D__WXOSX_COCOA__  -D_FILE_OFFSET_BITS=64   -Wundef -Wunused-parameter -Wno-ctor-dtor-privacy -Woverloaded-virtual -Wno-deprecated-declarations -stdlib=libc++ -DWX_PRECOMP -O2 -fno-strict-aliasing -std=c++0x -stdlib=libc++ -fno-common 
 
 #wxWdigets C++ link flags
-WX_LIBS=-L$(WX_DIR)/lib
+WX_LIBS=-L$(WX_DIR)/mac
 # QTKit required by mediactrl
 WX_DEP_FRAMEWORKS=-framework IOKit -framework Carbon -framework Cocoa -framework AudioToolbox -framework System -framework OpenGL  -framework QTKit -framework WebKit 
 WX_DEP_LIBS=-lwx_osx_cocoau-3.0 -lwxscintilla-3.0 -lwxtiff-3.0 -lwxjpeg-3.0 -lwxpng-3.0 -lwxregexu-3.0 -lz -lpthread -liconv -lc++ -llzma  -lexpat 
@@ -35,7 +35,7 @@ EXECUTABLE=VCS
 	
 	
 #create app
-APP_PATH=../bin/$(EXECUTABLE).app
+APP_PATH=./bin/$(EXECUTABLE).app
 
 print:
 	@echo $(SOURCES)
