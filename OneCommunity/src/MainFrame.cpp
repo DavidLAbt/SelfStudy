@@ -30,8 +30,14 @@ void CMainFrame::BuildMeunbar() {
   fileMenu->Append(wxID_EXIT, wxT("E&xit\tAlt-X"), wxT("Quit this program"));
   
   fileMenu->Append(myID_LOAD, wxT("C&onnect\tAlt-C"), wxT("Connect to video source"));
-  fileMenu->Append(myID_PLAY, wxT("P&lay\tAlt-P"), wxT("Play"));
   fileMenu->Append(myID_EDIT_COLS, wxT("Rearrange"), wxT("Set the arrangement of windows"));
+  fileMenu->Append(myID_PLAY, wxT("P&lay\tAlt-P"), wxT("Play"));
+  
+  // the view menu
+  wxMenu* viewMenu = new wxMenu;
+  viewMenu->AppendCheckItem(myID_VIEW_SHOW_CTRLS, wxT("Show controls"), wxT("Show the control for each subwindow"));
+  
+  
   
   // the about item should be in the help menu
   wxMenu* helpMenu = new wxMenu;
@@ -40,6 +46,7 @@ void CMainFrame::BuildMeunbar() {
   //append the created menu to menubar
   menuBar->Append(fileMenu, wxT("&File"));
   menuBar->Append(helpMenu, wxT("&Help"));
+  menuBar->Append(viewMenu, wxT("&View"));
   
   // attach the menu bar to the frame
   SetMenuBar(menuBar);
@@ -52,6 +59,7 @@ void CMainFrame::BuildMeunbar() {
   this->Connect(myID_LOAD, wxEVT_MENU, wxCommandEventHandler(CMainFrame::OnLoad));
   this->Connect(myID_PLAY, wxEVT_MENU,wxCommandEventHandler(CMainFrame::OnPlay));
   this->Connect(myID_EDIT_COLS, wxEVT_MENU,wxCommandEventHandler(CMainFrame::OnEditCols));
+  // this->Connect(myID_VIEW_SHOW_CTRLS, wxEVT_MENU, wxCommandEventHandler(CMainFrame::OnViewShowControls));
 }
 
 
@@ -92,5 +100,10 @@ void CMainFrame::OnEditCols(wxCommandEvent& event)
   if (numb != -1){
     m_player->SetNumbOfCols(numb);
   }
- 
 }
+/*
+void CMainFrame::OnViewShowControls(wxCommandEvent& event)
+{
+  m_player->ShowCtrls(event.IsChecked());
+}
+*/

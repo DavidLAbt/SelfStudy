@@ -73,7 +73,8 @@ enum
     // Menu event IDs
     myID_LOAD=1,
     myID_PLAY,
-    myID_EDIT_COLS
+    myID_EDIT_COLS,
+    myID_VIEW_SHOW_CTRLS
 };
 
 

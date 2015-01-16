@@ -14,6 +14,7 @@ public:
 	void PlayAll();
   
   void SetNumbOfCols(int nCols);
+  void ShowCtrls(bool bshow);
 
 private:
   

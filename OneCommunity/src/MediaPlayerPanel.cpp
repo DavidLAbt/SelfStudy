@@ -9,14 +9,56 @@
 #endif
 #define MAX_NUMB_OF_SRC (6)
 
+/*
+
+void CMediaPlayerPanel::ShowCtrls(bool bshow)
+{
+  for (int i = 0;  i < m_nUsers; i++) {
+    m_mediactrls[i]->ShowPlayerControls( bshow ? wxMEDIACTRLPLAYERCONTROLS_DEFAULT : wxMEDIACTRLPLAYERCONTROLS_NONE );
+  }
+  
+}
+
+*/
+
 void CMediaPlayerPanel::SetNumbOfCols(int nCols)
 {
-  m_sizer->SetCols(nCols);
+  // m_sizer = new wxGridSizer(nCols, 10, 10);
+  
+  if (m_sizer != NULL && nCols <= m_nUsers) {
+    
+    m_sizer = new wxGridSizer(nCols, 10, 10);
+    for (int i = 0;  i < m_nUsers; i++) {
+      m_sizer->Add(m_mediactrls[i], 0, wxALIGN_CENTRE|wxALL|wxEXPAND);
+    }
+    this->SetSizer(m_sizer, true);//attach the sizer
+    SetSizerAndFit(m_sizer);//fit sizer
+    PostSizeEventToParent();
+  }
+  
+  
 }
 
 void CMediaPlayerPanel::LoadAll(int nUsers)
 {	
+  // remove all
+  
+  if(m_sizer != NULL)
+  {
+    m_sizer->Clear(true);
+  }
+  
+  if (m_mediactrls != NULL){
+    delete m_mediactrls;
+    m_mediactrls=NULL;
+  }
   m_nUsers = nUsers;
+  //
+  //  Create a grid sizer
+  //
+  
+ 
+  
   int i, j;
   
   // create wxMediaCtrl
@@ -35,12 +77,14 @@ void CMediaPlayerPanel::LoadAll(int nUsers)
   	m_mediactrls[i] = mediactrl;
   }
   
+
+  //m_sizer->SetCols(nCols);
+  //m_sizer->SetRows(nRows);
   // add wxMediaCtrl to sizer
   int nRows = m_layout[m_nUsers][0];
   int nCols = m_layout[m_nUsers][1];
-  m_sizer->SetCols(nCols);
-  //m_sizer->SetRows(nRows);
   
+  m_sizer = new wxGridSizer(nRows, nCols, 10, 10);
   for (i = 0;  i < m_nUsers; i++) {
     m_sizer->Add(m_mediactrls[i], 0, wxALIGN_CENTRE|wxALL|wxEXPAND);
   }
@@ -70,14 +114,21 @@ void CMediaPlayerPanel::LoadAll(int nUsers)
 #endif
     m_mediactrls[i]->Load(fn);
 	}
+  
 
+  //
+ 
+  this->SetSizer(m_sizer, true);//attach the sizer
+  SetSizerAndFit(m_sizer);//fit sizer
+  PostSizeEventToParent();
+  //this->Refresh();
+  //this->Update();
    
 }
 
 void  CMediaPlayerPanel::PlayAll()
 {
 	int i = 0;
-	
 	for (i = 0; i < m_nUsers; i++){
 		m_mediactrls[i]->Play();
 	}
@@ -85,15 +136,10 @@ void  CMediaPlayerPanel::PlayAll()
 
 CMediaPlayerPanel::CMediaPlayerPanel(wxFrame* parent) : wxPanel(parent, wxID_ANY)
 {
-  //
-  //  Create a grid sizer
-  //
-  m_sizer = new wxGridSizer(3, 10, 10);
-  m_nUsers = 0;
+  m_sizer  = NULL;
+  m_nUsers = -1;
+  m_mediactrls = NULL;
   
-  //
-  this->SetSizer(m_sizer);//attach the sizer
-  SetSizerAndFit(m_sizer);//fit sizer
 }
 
 
