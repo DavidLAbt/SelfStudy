@@ -1,6 +1,6 @@
 #include "wxwidgets.h"
 #include "MediaPlayerPanel.h"
-
+#include "GstreamerBackend.h"
 
 // ----------------------------------------------------------------------------
 // This makes relative paths work in C++ in Xcode by changing directory to the Resources folder inside the .app bundle
@@ -68,13 +68,17 @@ CMediaPlayerPanel::CMediaPlayerPanel(wxFrame* parent) : wxPanel(parent, wxID_ANY
   	//  Create a media control
   	//
   	wxMediaCtrl* mediactrl = new wxMediaCtrl();
+    
 
    	//  Make sure creation was successful
+    
+    
+    bool bOK = mediactrl->Create(this, wxID_ANY,wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxT("CGStreamerMediaBackend"));
 
-    // str now contains "1 2 3"
-  	bool bOK = mediactrl->Create(this, wxID_ANY);
-  	wxASSERT_MSG(bOK, wxT("Could not create media control!"));
-  	wxUnusedVar(bOK);
+                                              
+    wxASSERT_MSG(bOK, wxT("Could not create media control!"));
+  	
+    wxUnusedVar(bOK);
   	
   	m_mediactrls[i] = mediactrl;
   	sizer->Add(m_mediactrls[i], 0, wxALIGN_CENTRE|wxALL|wxEXPAND);

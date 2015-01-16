@@ -1,0 +1,29 @@
+
+
+Videostreaming with Gstreamer
+
+http://www.z25.org/static/_rd_/videostreaming_intro_plab/
+
+
+Multicast (UDP)
+http://www.tack.ch/multicast/
+http://www.tenouk.com/Module41c.html
+http://www.cs.usfca.edu/~parrt/doc/java/Sockets-notes.pdf
+http://ganges.cs.tcd.ie/undergrad/4ba2/multicast/antony/index.html
+http://www.mathcs.emory.edu/~cheung/Courses/558/Syllabus/14-Multicast/intro.html
+
+wxWidgets
+wxWidgets:使用IP Address控件(仅适用于msw)
+http://blog.csdn.net/sendltd/article/details/1606413
+
+
+UI design
+http://www.gotomeeting.com/online/enter?c_name=gotomeeting-free-to-pro-learn-more
+
+
+Gstreamer backend
+
+GstVideoOverlay
+
+http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/gst-plugins-base-libs-gstvideooverlay.html#GstVideoOverlay
+
