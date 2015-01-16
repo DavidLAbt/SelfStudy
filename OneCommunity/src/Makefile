@@ -40,7 +40,7 @@ LDFLAGS=$(I_SYSROOT) $(WX_LDFLGS) $(GST_LDFLGS)
 # targets setting
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=VCS
+EXECUTABLE=adjustable
 
 
 	

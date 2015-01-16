@@ -29,6 +29,8 @@
 #include "wx/filedlg.h"     // for opening files from OpenFile
 #include "wx/slider.h"      // for a slider for seeking within media
 #include "wx/sizer.h"       // for positioning controls/wxBoxSizer
+#include "wx/gbsizer.h"
+
 #include "wx/timer.h"       // timer for updating status bar
 #include "wx/textdlg.h"     // for getting user text from OpenURL/Debug
 #include "wx/notebook.h"    // for wxNotebook and putting movies in pages
@@ -70,7 +72,8 @@ enum
 {
     // Menu event IDs
     myID_LOAD=1,
-    myID_PLAY
+    myID_PLAY,
+    myID_EDIT_COLS
 };
 
 

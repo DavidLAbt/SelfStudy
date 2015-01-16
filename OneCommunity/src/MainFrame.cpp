@@ -1,7 +1,7 @@
 #include "wxwidgets.h"
 #include "MainFrame.h"
 #include "MediaPlayerPanel.h"
-
+#include <wx/numdlg.h> 
 
 CMainFrame::CMainFrame(const wxString& title): wxFrame(NULL, wxID_ANY, title) {
   
@@ -31,6 +31,7 @@ void CMainFrame::BuildMeunbar() {
   
   fileMenu->Append(myID_LOAD, wxT("C&onnect\tAlt-C"), wxT("Connect to video source"));
   fileMenu->Append(myID_PLAY, wxT("P&lay\tAlt-P"), wxT("Play"));
+  fileMenu->Append(myID_EDIT_COLS, wxT("Rearrange"), wxT("Set the arrangement of windows"));
   
   // the about item should be in the help menu
   wxMenu* helpMenu = new wxMenu;
@@ -50,7 +51,7 @@ void CMainFrame::BuildMeunbar() {
   this->Connect(wxID_ABOUT, wxEVT_MENU,wxCommandEventHandler(CMainFrame::OnAbout));
   this->Connect(myID_LOAD, wxEVT_MENU, wxCommandEventHandler(CMainFrame::OnLoad));
   this->Connect(myID_PLAY, wxEVT_MENU,wxCommandEventHandler(CMainFrame::OnPlay));
-  
+  this->Connect(myID_EDIT_COLS, wxEVT_MENU,wxCommandEventHandler(CMainFrame::OnEditCols));
 }
 
 
@@ -71,7 +72,11 @@ void CMainFrame::OnQuit(wxCommandEvent& event)
 
 void CMainFrame::OnLoad(wxCommandEvent& event)
 {
-  m_player->LoadAll();
+  int numb =  wxGetNumberFromUser(	wxT("Setting the number of attendees"), "#attendees:", "Attendees", 6, 2, 10, this);	
+  if (numb != -1){
+    m_player->LoadAll(numb);
+  }
+  
 }
 
 
@@ -80,3 +85,12 @@ void CMainFrame::OnPlay(wxCommandEvent& event)
   m_player->PlayAll();
 }
 
+void CMainFrame::OnEditCols(wxCommandEvent& event)
+{
+
+  int numb =  wxGetNumberFromUser	(	wxT("Please input the number of windows in a row"), "#columns:", "Rearrange windows", 3, 1, 5, this);	
+  if (numb != -1){
+    m_player->SetNumbOfCols(numb);
+  }
+ 
+}

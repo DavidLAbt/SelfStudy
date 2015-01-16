@@ -17,6 +17,8 @@ public:
   void OnAbout(wxCommandEvent& event);
   void OnLoad(wxCommandEvent& event);
   void OnPlay(wxCommandEvent& event);
+  
+  void OnEditCols(wxCommandEvent& event);
 private:
 
 	void BuildMeunbar();
